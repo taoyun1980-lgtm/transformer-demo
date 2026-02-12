@@ -45,3 +45,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@keyframes tokenAppear {
+  0% { opacity: 0; transform: translateY(-8px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

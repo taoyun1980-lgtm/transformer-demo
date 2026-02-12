@@ -9,6 +9,7 @@ import { Step4MultiHead } from '@/components/steps/Step4MultiHead';
 import { Step5FeedForward } from '@/components/steps/Step5FeedForward';
 import { Step6ResidualNorm } from '@/components/steps/Step6ResidualNorm';
 import { Step7Output } from '@/components/steps/Step7Output';
+import { Step8Generation } from '@/components/steps/Step8Generation';
 
 const STEPS = [
   { num: 1, label: '分词与嵌入', icon: '📝' },
@@ -18,6 +19,7 @@ const STEPS = [
   { num: 5, label: '前馈网络', icon: '⚡' },
   { num: 6, label: '残差 & 归一化', icon: '🔄' },
   { num: 7, label: '输出预测', icon: '🎯' },
+  { num: 8, label: '完整生成模拟', icon: '🚀' },
 ];
 
 export default function Home() {
@@ -96,6 +98,7 @@ export default function Home() {
           {currentStep === 5 && <Step5FeedForward />}
           {currentStep === 6 && <Step6ResidualNorm />}
           {currentStep === 7 && <Step7Output />}
+          {currentStep === 8 && <Step8Generation />}
         </div>
       </main>
     </div>

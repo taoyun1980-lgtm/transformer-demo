@@ -219,12 +219,12 @@ export function Step7Output() {
         </div>
       </Card>
 
-      <div className="flex justify-start">
+      <div className="flex justify-between">
         <Button variant="outline" onClick={() => setCurrentStep(6)}>
           ← 上一步
         </Button>
-        <Button variant="secondary" className="ml-3" onClick={() => setCurrentStep(1)}>
-          从头开始
+        <Button onClick={() => setCurrentStep(8)}>
+          下一步：完整生成模拟 🚀
         </Button>
       </div>
     </div>
