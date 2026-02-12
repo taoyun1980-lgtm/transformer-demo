@@ -79,6 +79,32 @@ export function Step5FeedForward() {
             />
           </div>
 
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+            <p className="text-sm font-semibold text-indigo-900 mb-2">💬 生成实例：FFN 在做什么"思考"？</p>
+            <div className="bg-white rounded-lg p-3 mb-3">
+              <p className="text-sm text-gray-800 mb-2">
+                注意力层已经帮每个词收集了上下文信息。FFN 就是在这个基础上做深入加工。
+              </p>
+              <p className="text-sm text-gray-800 mb-2">
+                比如处理 <strong>&quot;苹果发布了新手机&quot;</strong> 这句话时：
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm whitespace-nowrap">注意力层之后</span>
+                  <span className="text-sm">→ &quot;苹果&quot; 已经通过注意力从 &quot;手机&quot; &quot;发布&quot; 获取了上下文</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm whitespace-nowrap">FFN 的工作</span>
+                  <span className="text-sm">→ 综合这些信息，判断这里的 &quot;苹果&quot; = Apple 公司，而不是水果</span>
+                </div>
+              </div>
+              <p className="text-xs text-gray-600 mt-3">
+                可以把 FFN 想象成每个词的"独立思考时间"——注意力是"讨论"，FFN 是"消化总结"。
+                研究发现，FFN 层存储了大量的世界知识（如"苹果是科技公司"等事实）。
+              </p>
+            </div>
+          </div>
+
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <p className="text-sm font-semibold text-green-900 mb-1">小结</p>
             <p className="text-sm text-green-800">

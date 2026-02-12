@@ -117,6 +117,35 @@ export function Step4MultiHead() {
             />
           </div>
 
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+            <p className="text-sm font-semibold text-indigo-900 mb-2">💬 生成实例：多个视角有什么好处？</p>
+            <div className="bg-white rounded-lg p-3 mb-3">
+              <p className="text-sm text-gray-800 mb-3">
+                以 <strong>&quot;小明昨天在北京吃了烤鸭&quot;</strong> 为例，不同的注意力头关注不同的关系：
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                  <p className="text-xs font-bold text-orange-900 mb-1">Head 1: 语法关系（谁做了什么）</p>
+                  <div className="text-sm space-y-1">
+                    <p><span className="bg-orange-200 px-1 rounded">小明</span> → <span className="bg-orange-200 px-1 rounded">吃了</span> <span className="text-xs text-orange-600">（主语→谓语）</span></p>
+                    <p><span className="bg-orange-200 px-1 rounded">吃了</span> → <span className="bg-orange-200 px-1 rounded">烤鸭</span> <span className="text-xs text-orange-600">（谓语→宾语）</span></p>
+                  </div>
+                </div>
+                <div className="bg-teal-50 rounded-lg p-3 border border-teal-200">
+                  <p className="text-xs font-bold text-teal-900 mb-1">Head 2: 语义关系（修饰/场景）</p>
+                  <div className="text-sm space-y-1">
+                    <p><span className="bg-teal-200 px-1 rounded">烤鸭</span> → <span className="bg-teal-200 px-1 rounded">北京</span> <span className="text-xs text-teal-600">（特产→地点）</span></p>
+                    <p><span className="bg-teal-200 px-1 rounded">吃了</span> → <span className="bg-teal-200 px-1 rounded">昨天</span> <span className="text-xs text-teal-600">（动作→时间）</span></p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs text-gray-600 mt-3">
+                正因为有多个头同时工作，GPT 才能既理解语法结构，又捕捉到"北京烤鸭"这种语义搭配。
+                实际的 GPT-3 有 96 个头，能捕捉到更多细微的关系模式！
+              </p>
+            </div>
+          </div>
+
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <p className="text-sm font-semibold text-green-900 mb-1">小结</p>
             <p className="text-sm text-green-800">

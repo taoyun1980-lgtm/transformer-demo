@@ -117,6 +117,90 @@ export function Step7Output() {
             </p>
           </div>
 
+          <Card title="💬 完整实例：GPT 是如何一步步生成句子的？">
+            <div className="space-y-4">
+              <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                <p className="text-sm text-indigo-800">
+                  用户输入：<strong>&quot;今天天气真好，我想去&quot;</strong>
+                </p>
+                <p className="text-sm text-indigo-700 mt-1">
+                  GPT 需要预测下一个词。整个过程经过了我们学的全部 7 步：
+                </p>
+              </div>
+
+              <div className="bg-white border border-border rounded-lg overflow-hidden">
+                <div className="divide-y divide-border">
+                  {[
+                    { step: '1. 分词', icon: '📝', desc: '"今天/天气/真好/，/我/想/去" → 7个token → 7个向量', color: 'bg-blue-50' },
+                    { step: '2. 位置编码', icon: '📍', desc: '给每个词标记位置（第0位、第1位...），模型知道词序', color: 'bg-cyan-50' },
+                    { step: '3. 自注意力', icon: '🔍', desc: '"去"关注"我"(谁去)和"想"(什么意愿)，收集上下文', color: 'bg-purple-50' },
+                    { step: '4. 多头注意力', icon: '🧠', desc: 'Head1关注"想→去"(动作链) Head2关注"天气好→去"(因果)', color: 'bg-pink-50' },
+                    { step: '5. 前馈网络', icon: '⚡', desc: '综合信息深入推理：好天气+想去 → 可能是户外活动', color: 'bg-yellow-50' },
+                    { step: '6. 残差归一化', icon: '🔄', desc: '稳定数值，保留原始信息不丢失', color: 'bg-green-50' },
+                    { step: '7. 输出预测', icon: '🎯', desc: '映射到词表 → softmax → 选概率最高的词', color: 'bg-orange-50' },
+                  ].map((item, i) => (
+                    <div key={i} className={`${item.color} px-4 py-3 flex items-start gap-3`}>
+                      <span className="text-lg">{item.icon}</span>
+                      <div>
+                        <span className="text-sm font-bold">{item.step}</span>
+                        <p className="text-xs text-gray-700 mt-0.5">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-sm font-semibold mb-3">最终预测结果：</p>
+                <div className="bg-white border border-border rounded-lg p-4">
+                  <div className="flex items-center gap-2 flex-wrap justify-center mb-3">
+                    <span className="text-sm text-gray-500">今天天气真好，我想去</span>
+                    <span className="text-primary font-bold">→</span>
+                    <span className="bg-green-100 px-3 py-1 rounded-lg text-sm font-bold border-2 border-green-400">公园 (23%)</span>
+                    <span className="bg-green-50 px-2 py-1 rounded text-sm">散步 (15%)</span>
+                    <span className="bg-gray-100 px-2 py-1 rounded text-sm">外面 (12%)</span>
+                    <span className="bg-gray-50 px-2 py-1 rounded text-sm">爬山 (9%)</span>
+                  </div>
+                  <p className="text-xs text-center text-gray-600">模型选择概率最高的 &quot;公园&quot;，然后把 &quot;公园&quot; 加入输入，继续预测下一个词...</p>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <p className="text-sm font-semibold text-amber-900 mb-2">自回归生成：一个词一个词地写</p>
+                <div className="space-y-2 font-mono text-sm">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-gray-500 text-xs w-12">第1轮</span>
+                    <span className="text-gray-800">今天天气真好，我想去</span>
+                    <span className="text-primary">→</span>
+                    <span className="bg-primary/10 px-1 rounded font-bold">公园</span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-gray-500 text-xs w-12">第2轮</span>
+                    <span className="text-gray-800">今天天气真好，我想去公园</span>
+                    <span className="text-primary">→</span>
+                    <span className="bg-primary/10 px-1 rounded font-bold">散</span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-gray-500 text-xs w-12">第3轮</span>
+                    <span className="text-gray-800">今天天气真好，我想去公园散</span>
+                    <span className="text-primary">→</span>
+                    <span className="bg-primary/10 px-1 rounded font-bold">步</span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-gray-500 text-xs w-12">第4轮</span>
+                    <span className="text-gray-800">今天天气真好，我想去公园散步</span>
+                    <span className="text-primary">→</span>
+                    <span className="bg-primary/10 px-1 rounded font-bold">。[结束]</span>
+                  </div>
+                </div>
+                <p className="text-xs text-amber-700 mt-3">
+                  每一轮都经过完整的 7 步流程。GPT 生成一段 100 字的回答，就要跑约 100 次这个流程。
+                  这就是为什么 AI 回复时是一个字一个字"打出来"的——它真的在一个一个预测！
+                </p>
+              </div>
+            </div>
+          </Card>
+
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <p className="text-sm font-semibold text-green-900 mb-2">完整流程回顾</p>
             <div className="text-sm text-green-800 space-y-1">

@@ -72,6 +72,28 @@ export function Step1Tokenization() {
             />
           </div>
 
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+            <p className="text-sm font-semibold text-indigo-900 mb-2">💬 生成实例：GPT 是怎么开始工作的？</p>
+            <p className="text-sm text-indigo-800 mb-3">
+              假设你问 GPT：<strong>"北京今天天气怎么样？"</strong>
+            </p>
+            <div className="bg-white rounded-lg p-3 mb-3">
+              <p className="text-xs text-gray-600 mb-2">第一步：GPT 先把你的问题拆成 token：</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {['北京', '今天', '天气', '怎么样', '？'].map((t, i) => (
+                  <span key={i} className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-mono">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <p className="text-xs text-gray-600 mt-2">然后每个 token 查嵌入表变成一个向量（比如 768 维的数字），计算机就能处理了。</p>
+            </div>
+            <p className="text-xs text-indigo-700">
+              就像翻译官把中文翻译成数学语言——模型后续的所有计算都基于这些向量。
+              上面我们演示的 &quot;我 爱 人工智能&quot; 也是同样的过程，只是维度缩小到 {D_MODEL} 方便观察。
+            </p>
+          </div>
+
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <p className="text-sm font-semibold text-green-900 mb-1">小结</p>
             <p className="text-sm text-green-800">

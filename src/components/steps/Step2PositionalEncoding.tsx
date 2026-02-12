@@ -86,6 +86,31 @@ export function Step2PositionalEncoding() {
             </div>
           </div>
 
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+            <p className="text-sm font-semibold text-indigo-900 mb-2">💬 生成实例：位置为什么重要？</p>
+            <div className="bg-white rounded-lg p-3 mb-3">
+              <p className="text-sm text-gray-800 mb-2">看这两句话，用的完全相同的词，但意思截然不同：</p>
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div className="bg-red-50 rounded-lg p-3 border border-red-200">
+                  <p className="text-lg font-bold">&quot;狗 追 猫&quot;</p>
+                  <p className="text-xs text-red-700 mt-1">狗是追的一方</p>
+                </div>
+                <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
+                  <p className="text-lg font-bold">&quot;猫 追 狗&quot;</p>
+                  <p className="text-xs text-blue-700 mt-1">猫是追的一方</p>
+                </div>
+              </div>
+              <p className="text-xs text-gray-600 mt-3">
+                如果没有位置编码，模型看到的只是 {'{'}猫, 追, 狗{'}'} 这个集合，分不清谁追谁。
+                有了位置编码，模型知道"狗"在第 0 位是主语，"猫"在第 2 位是宾语。
+              </p>
+            </div>
+            <p className="text-xs text-indigo-700">
+              同理，GPT 在生成回答时，也需要知道前面已经生成的每个词的位置顺序，
+              才能正确理解上下文接着往下写。
+            </p>
+          </div>
+
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <p className="text-sm font-semibold text-green-900 mb-1">小结</p>
             <p className="text-sm text-green-800">
